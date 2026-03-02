@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voltify — Electronics Sales Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- =====================================================
+       SIDEBAR
+  ===================================================== -->
+  <aside id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo">
+        <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+          <polygon points="16,2 4,16 13,16 12,26 24,12 15,12" fill="#F5A623" stroke="#F5A623" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="brand-name">Volt<span>ify</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="overview">
+        <span class="nav-icon">⚡</span><span class="nav-label">Overview</span>
+      </a>
+      <a href="#" class="nav-item" data-page="products">
+        <span class="nav-icon">📦</span><span class="nav-label">Products</span>
+      </a>
+      <a href="#" class="nav-item" data-page="analytics">
+        <span class="nav-icon">📊</span><span class="nav-label">Analytics</span>
+      </a>
+      <a href="#" class="nav-item" data-page="orders">
+        <span class="nav-icon">🛒</span><span class="nav-label">Orders</span>
+      </a>
+      <a href="#" class="nav-item" data-page="settings">
+        <span class="nav-icon">⚙️</span><span class="nav-label">Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">AD</div>
+        <div class="user-info">
+          <span class="user-name">Admin</span>
+          <span class="user-role">Super Admin</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile topbar -->
+  <header id="mob-topbar">
+    <div class="mob-inner">
+      <button id="mob-btn"><span></span><span></span><span></span></button>
+      <span class="brand-name">Volt<span>ify</span></span>
+      <span class="live-dot">● LIVE</span>
+    </div>
+  </header>
+  <div id="mob-overlay"></div>
+
+  <!-- =====================================================
+       MAIN CONTENT
+  ===================================================== -->
+  <main id="main">
+
+    <!-- Content topbar -->
+    <div id="ctopbar">
+      <div class="ctb-left">
+        <h2 id="page-title">Overview</h2>
+        <span id="page-crumb">Dashboard / Overview</span>
+      </div>
+      <div class="ctb-right">
+        <span class="live-dot">● LIVE</span>
+        <span class="ctb-date" id="ctb-date"></span>
+        <div class="user-avatar sm">AD</div>
+      </div>
+    </div>
+
+    <!-- ===== PAGE: OVERVIEW ===== -->
+    <div id="page-overview" class="page active">
+
+      <div class="hero-banner slide-left">
+        <div class="hb-text">
+          <p class="eyebrow">Q4 2024 · Electronics Division</p>
+          <h1>Voltify Electronics<br/><span class="glow-text">Sales Overview</span></h1>
+          <p class="hero-sub">Monitor revenue, track orders and analyse your full electronics portfolio in one place. All data is demo.</p>
+          <div class="hero-btns">
+            <button class="btn-primary nav-trigger" data-page="analytics">View Analytics</button>
+            <button class="btn-outline nav-trigger" data-page="products">Browse Products</button>
+          </div>
+        </div>
+        <div class="hb-visual">
+          <div class="hb-gfx">
+            <div class="gfx-ring r1"></div>
+            <div class="gfx-ring r2"></div>
+            <div class="gfx-ring r3"></div>
+            <span class="gfx-bolt">⚡</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card pop-in anim-d1">
+          <div class="kpi-top"><span class="kpi-icon green">💰</span><span class="kpi-trend up">▲ 18.4%</span></div>
+          <div class="kpi-value" id="kpiSales">$0</div>
+          <div class="kpi-label">Total Sales</div>
+          <div class="kpi-bar"><div class="kpi-fill" style="background:var(--green)" data-w="74"></div></div>
+        </div>
+        <div class="kpi-card pop-in anim-d2">
+          <div class="kpi-top"><span class="kpi-icon cyan">📈</span><span class="kpi-trend up">▲ 6.2%</span></div>
+          <div class="kpi-value" id="kpiProfit">0%</div>
+          <div class="kpi-label">Profit Margin</div>
+          <div class="kpi-bar"><div class="kpi-fill" style="background:var(--cyan)" data-w="62"></div></div>
+        </div>
+        <div class="kpi-card pop-in anim-d3">
+          <div class="kpi-top"><span class="kpi-icon orange">📦</span><span class="kpi-trend up">▲ 312</span></div>
+          <div class="kpi-value" id="kpiOrders">0</div>
+          <div class="kpi-label">Total Orders</div>
+          <div class="kpi-bar"><div class="kpi-fill" style="background:var(--orange)" data-w="88"></div></div>
+        </div>
+        <div class="kpi-card pop-in anim-d4">
+          <div class="kpi-top"><span class="kpi-icon purple">⭐</span><span class="kpi-trend up">▲ 0.3</span></div>
+          <div class="kpi-value">4.7 / 5</div>
+          <div class="kpi-label">Avg. Rating</div>
+          <div class="kpi-bar"><div class="kpi-fill" style="background:var(--purple)" data-w="94"></div></div>
+        </div>
+      </div>
+
+      <div class="ov-row">
+        <div class="chart-card slide-left anim-d1">
+          <div class="chart-head"><h3>Revenue Trend</h3><span class="chart-badge">6 months</span></div>
+          <canvas id="ovLine"></canvas>
+        </div>
+        <div class="chart-card slide-right anim-d2">
+          <div class="chart-head"><h3>Top Products</h3><span class="chart-badge">by revenue</span></div>
+          <canvas id="ovBar"></canvas>
+        </div>
+      </div>
+
+      <div class="table-card slide-left">
+        <div class="chart-head"><h3>Recent Orders</h3><span class="chart-badge">Last 7 days</span></div>
+        <div class="table-wrap">
+          <table class="dtable">
+            <thead><tr><th>Order ID</th><th>Product</th><th>Customer</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody id="ovOrdersBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /overview -->
+
+
+    <!-- ===== PAGE: PRODUCTS ===== -->
+    <div id="page-products" class="page">
+
+      <div class="page-intro slide-left">
+        <div>
+          <span class="section-label">Catalogue</span>
+          <h2 class="page-h2">Electronics Inventory</h2>
+          <p>10 featured products — demo purchase only, no real transactions.</p>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="Audio">Audio</button>
+          <button class="filter-btn" data-filter="Gaming">Gaming</button>
+          <button class="filter-btn" data-filter="Wearables">Wearables</button>
+          <button class="filter-btn" data-filter="Power">Power</button>
+          <button class="filter-btn" data-filter="Tools">Tools</button>
+        </div>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+
+        <div class="prod-card slide-left anim-d1" data-cat="Audio">
+          <div class="prod-img" style="--ga:#1a2744;--gb:#0a1228"><span class="prod-emoji">🔊</span><span class="prod-badge">Best Seller</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Audio</span><h3>Bluetooth Speaker</h3>
+            <p>360° surround sound · 12hr battery · IPX5 waterproof rating for outdoor use</p>
+            <div class="prod-stars">★★★★★ <span>4.9</span></div>
+            <div class="prod-meta"><span>In Stock: 248</span><span>Sold: 320</span></div>
+            <div class="prod-foot"><span class="prod-price">$45.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-right anim-d2" data-cat="Grooming">
+          <div class="prod-img" style="--ga:#162416;--gb:#0a180a"><span class="prod-emoji">✂️</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Grooming</span><h3>Electric Trimmer</h3>
+            <p>Self-sharpening blades · 60-min cordless runtime · USB fast charge</p>
+            <div class="prod-stars">★★★★☆ <span>4.5</span></div>
+            <div class="prod-meta"><span>In Stock: 312</span><span>Sold: 410</span></div>
+            <div class="prod-foot"><span class="prod-price">$25.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-left anim-d3" data-cat="Tools">
+          <div class="prod-img" style="--ga:#261c0a;--gb:#180f00"><span class="prod-emoji">🔦</span><span class="prod-badge hot">Hot</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Tools</span><h3>LED Flashlight</h3>
+            <p>1000 lumen · 5 lighting modes · aircraft-grade aluminium body</p>
+            <div class="prod-stars">★★★★★ <span>4.8</span></div>
+            <div class="prod-meta"><span>In Stock: 540</span><span>Sold: 580</span></div>
+            <div class="prod-foot"><span class="prod-price">$15.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-right anim-d4" data-cat="Audio">
+          <div class="prod-img" style="--ga:#1a1a30;--gb:#0e0e1e"><span class="prod-emoji">🎧</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Audio</span><h3>Wireless Headphones</h3>
+            <p>40hr playtime · foldable over-ear design · powerful deep bass</p>
+            <div class="prod-stars">★★★★★ <span>4.7</span></div>
+            <div class="prod-meta"><span>In Stock: 180</span><span>Sold: 260</span></div>
+            <div class="prod-foot"><span class="prod-price">$60.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-left anim-d1" data-cat="Wearables">
+          <div class="prod-img" style="--ga:#0c1e2c;--gb:#06101a"><span class="prod-emoji">⌚</span><span class="prod-badge new">New</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Wearables</span><h3>Smartwatch</h3>
+            <p>Heart rate · GPS · sleep tracking · 7-day battery life</p>
+            <div class="prod-stars">★★★★☆ <span>4.6</span></div>
+            <div class="prod-meta"><span>In Stock: 95</span><span>Sold: 190</span></div>
+            <div class="prod-foot"><span class="prod-price">$80.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-right anim-d2" data-cat="Power">
+          <div class="prod-img" style="--ga:#1e1430;--gb:#120c1e"><span class="prod-emoji">🔋</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Power</span><h3>Portable Charger</h3>
+            <p>20,000mAh · 65W fast charge · 3 USB-C ports + LED display</p>
+            <div class="prod-stars">★★★★★ <span>4.9</span></div>
+            <div class="prod-meta"><span>In Stock: 220</span><span>Sold: 370</span></div>
+            <div class="prod-foot"><span class="prod-price">$35.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-left anim-d3" data-cat="Gaming">
+          <div class="prod-img" style="--ga:#200a0a;--gb:#150000"><span class="prod-emoji">🖱️</span><span class="prod-badge hot">Hot</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Gaming</span><h3>Gaming Mouse</h3>
+            <p>16,000 DPI · 6 programmable buttons · full RGB lighting</p>
+            <div class="prod-stars">★★★★★ <span>4.8</span></div>
+            <div class="prod-meta"><span>In Stock: 310</span><span>Sold: 440</span></div>
+            <div class="prod-foot"><span class="prod-price">$40.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-right anim-d4" data-cat="Audio">
+          <div class="prod-img" style="--ga:#1a1a1a;--gb:#0c0c0c"><span class="prod-emoji">🎵</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Audio</span><h3>Noise Cancelling Earbuds</h3>
+            <p>Active ANC · 30hr total life · wireless charging case</p>
+            <div class="prod-stars">★★★★☆ <span>4.6</span></div>
+            <div class="prod-meta"><span>In Stock: 190</span><span>Sold: 300</span></div>
+            <div class="prod-foot"><span class="prod-price">$50.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-left anim-d1" data-cat="Camera">
+          <div class="prod-img" style="--ga:#0a1e1e;--gb:#001414"><span class="prod-emoji">📷</span><span class="prod-badge new">New</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Camera</span><h3>Action Camera</h3>
+            <p>4K 60fps · waterproof 30m · 6-axis built-in stabilisation</p>
+            <div class="prod-stars">★★★★★ <span>4.9</span></div>
+            <div class="prod-meta"><span>In Stock: 75</span><span>Sold: 150</span></div>
+            <div class="prod-foot"><span class="prod-price">$90.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+        <div class="prod-card slide-right anim-d2" data-cat="Display">
+          <div class="prod-img" style="--ga:#1e1a0a;--gb:#140f00"><span class="prod-emoji">📽️</span><span class="prod-badge premium">Premium</span></div>
+          <div class="prod-body">
+            <span class="prod-cat">Display</span><h3>Mini Projector</h3>
+            <p>1080p native · 300" max screen · built-in Android OS</p>
+            <div class="prod-stars">★★★★☆ <span>4.7</span></div>
+            <div class="prod-meta"><span>In Stock: 42</span><span>Sold: 100</span></div>
+            <div class="prod-foot"><span class="prod-price">$120.00</span><button class="btn-buy" onclick="return false;">Purchase</button></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /products -->
+
+
+    <!-- ===== PAGE: ANALYTICS ===== -->
+    <div id="page-analytics" class="page">
+
+      <div class="page-intro slide-left">
+        <div>
+          <span class="section-label">Analytics</span>
+          <h2 class="page-h2">Sales Insights</h2>
+          <p>Visual breakdown of performance and revenue trends.</p>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-btn active">Q4 2024</button>
+          <button class="filter-btn">Q3 2024</button>
+          <button class="filter-btn">YTD</button>
+        </div>
+      </div>
+
+      <div class="an-kpi-row">
+        <div class="an-kpi pop-in anim-d1"><span class="an-val" id="anSales">$0</span><span class="an-lbl">Total Revenue</span></div>
+        <div class="an-kpi pop-in anim-d2"><span class="an-val" id="anOrders">0</span><span class="an-lbl">Units Sold</span></div>
+        <div class="an-kpi pop-in anim-d3"><span class="an-val">23%</span><span class="an-lbl">Avg Margin</span></div>
+        <div class="an-kpi pop-in anim-d4"><span class="an-val">$18.40</span><span class="an-lbl">Avg Order Value</span></div>
+        <div class="an-kpi pop-in anim-d1"><span class="an-val">68%</span><span class="an-lbl">Repeat Buyers</span></div>
+        <div class="an-kpi pop-in anim-d2"><span class="an-val">2.3x</span><span class="an-lbl">Return on Ad Spend</span></div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card pop-in anim-d1">
+          <div class="chart-head"><h3>Sales by Product</h3><span class="chart-badge">Bar Chart</span></div>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-card pop-in anim-d2">
+          <div class="chart-head"><h3>Revenue Over Time</h3><span class="chart-badge">Line Chart</span></div>
+          <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-card chart-wide pop-in anim-d3">
+          <div class="chart-head"><h3>Profit Distribution</h3><span class="chart-badge">Donut Chart</span></div>
+          <div class="pie-wrap">
+            <canvas id="pieChart"></canvas>
+            <ul id="pieLegend" class="pie-legend"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-card slide-left">
+        <div class="chart-head"><h3>Product Performance</h3><span class="chart-badge">All Products</span></div>
+        <div class="table-wrap">
+          <table class="dtable">
+            <thead><tr><th>#</th><th>Product</th><th>Price</th><th>Units</th><th>Revenue</th><th>Margin</th><th>Bar</th></tr></thead>
+            <tbody id="analyticsBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /analytics -->
+
+
+    <!-- ===== PAGE: ORDERS ===== -->
+    <div id="page-orders" class="page">
+
+      <div class="page-intro slide-left">
+        <div>
+          <span class="section-label">Orders</span>
+          <h2 class="page-h2">Order Management</h2>
+          <p>View and manage all customer orders. Demo data only.</p>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-ostatus="all">All</button>
+          <button class="filter-btn" data-ostatus="Delivered">Delivered</button>
+          <button class="filter-btn" data-ostatus="Processing">Processing</button>
+          <button class="filter-btn" data-ostatus="Cancelled">Cancelled</button>
+        </div>
+      </div>
+
+      <div class="table-card slide-left">
+        <div class="table-wrap">
+          <table class="dtable">
+            <thead><tr><th>Order ID</th><th>Product</th><th>Customer</th><th>Qty</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody id="ordersBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /orders -->
+
+
+    <!-- ===== PAGE: SETTINGS ===== -->
+    <div id="page-settings" class="page">
+
+      <div class="page-intro slide-left">
+        <div>
+          <span class="section-label">Settings</span>
+          <h2 class="page-h2">Dashboard Settings</h2>
+          <p>Manage your preferences. Demo only — nothing is saved.</p>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <div class="settings-card pop-in anim-d1">
+          <h3>Profile</h3>
+          <div class="sform">
+            <label>Full Name<input type="text" value="Admin User"/></label>
+            <label>Email<input type="email" value="admin@voltify.io"/></label>
+            <label>Role<input type="text" value="Dashboard Admin"/></label>
+            <button class="btn-primary" onclick="return false;">Save Changes</button>
+          </div>
+        </div>
+        <div class="settings-card pop-in anim-d2">
+          <h3>Preferences</h3>
+          <div class="sform">
+            <label>Currency<select><option>USD ($)</option><option>EUR (€)</option><option>GBP (£)</option></select></label>
+            <label>Date Format<select><option>MM/DD/YYYY</option><option>DD/MM/YYYY</option></select></label>
+            <label>Timezone<select><option>UTC+0</option><option>UTC+5:30</option><option>UTC-5</option></select></label>
+            <button class="btn-primary" onclick="return false;">Save Preferences</button>
+          </div>
+        </div>
+        <div class="settings-card pop-in anim-d3">
+          <h3>Notifications</h3>
+          <div class="sform">
+            <div class="toggle-row"><span>New Order Alerts</span><label class="tog"><input type="checkbox" checked/><span class="tog-track"></span></label></div>
+            <div class="toggle-row"><span>Low Stock Warnings</span><label class="tog"><input type="checkbox" checked/><span class="tog-track"></span></label></div>
+            <div class="toggle-row"><span>Weekly Summary</span><label class="tog"><input type="checkbox"/><span class="tog-track"></span></label></div>
+            <div class="toggle-row"><span>Revenue Milestones</span><label class="tog"><input type="checkbox" checked/><span class="tog-track"></span></label></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /settings -->
+
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <svg width="16" height="16" viewBox="0 0 28 28" fill="none"><polygon points="16,2 4,16 13,16 12,26 24,12 15,12" fill="#F5A623"/></svg>
+          <span>Volt<span>ify</span></span>
+        </div>
+        <p>Demo dashboard for portfolio purposes · All data is fictional · © 2024 Voltify Electronics</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
